@@ -1,4 +1,4 @@
-# 🇹🇭 OpenThaiGPT 1.0.0-beta
+# 🇹🇭 OpenThaiGPT 1.0.0-beta + JupyterHUB + GPU nvidia/cuda:12.2.0-devel-ubuntu20.04
 <img src="https://1173516064-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FvvbWvIIe82Iv1yHaDBC5%2Fuploads%2Fb8eiMDaqiEQL6ahbAY0h%2Fimage.png?alt=media&token=6fce78fd-2cca-4c0a-9648-bd5518e644ce" width="200px">
 
 OpenThaiGPT Version 1.0.0-beta is a 7B-parameter LLaMA model finetuned to follow Thai translated instructions below and makes use of the Huggingface LLaMA implementation. 

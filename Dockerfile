@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git \
     curl \
+    nano \
     software-properties-common \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt install -y python3.10 \
@@ -19,14 +20,16 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10 \
     && python3.10 -m pip install -r requirements.txt \
     && python3.10 -m pip install numpy --pre torch --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu118
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - 
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 
+RUN npm install -g configurable-http-proxy
+
 # For GPU users
-RUN pip install --extra-index-url https://pypi.nvidia.com tensorrt-bindings==8.6.1 tensorrt-libs==8.6.1
-RUN pip install -U tensorflow[and-cuda]
+#RUN pip install --extra-index-url https://pypi.nvidia.com tensorrt-bindings==8.6.1 tensorrt-libs==8.6.1
+#RUN pip install -U tensorflow[and-cuda]
 # For CPU users
-RUN pip install tensorflow
+#RUN pip install tensorflow
 
 COPY . .
 ENTRYPOINT [ "jupyterhub"]

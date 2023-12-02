@@ -9,6 +9,7 @@ fastai
 keras
 datasets
 gradio==3.44.4
+Django
 #accelerate
 #appdirs
 #loralib

@@ -1,3 +1,6 @@
+jupyterhub
+jupyterlab
+scipy
 accelerate
 appdirs
 loralib

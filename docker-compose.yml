@@ -1,20 +1,22 @@
 version: '3'
 
 services:
-  openthaigpt-0.1.0-beta:
+  jupyterhub-gpu-cuda12:
     build:
       context: ./
       dockerfile: Dockerfile
       args:
         BUILDKIT_INLINE_CACHE: "0"
-    image: openthaigpt-0.1.0-beta
-    shm_size: '64gb'
-    command: generate.py --load_8bit --base_model $BASE_MODEL --lora_weights 'kobkrit/openthaigpt-0.1.0-beta'
+    image: jupyterhub-gpu-cuda12
+    #shm_size: '64gb'
+    #command: generate.py --load_8bit --base_model $BASE_MODEL --lora_weights 'kobkrit/openthaigpt-0.1.0-beta'
     restart: unless-stopped
     volumes:
-      - openthaigpt-0.1.0-beta:/root/.cache # Location downloaded weights will be stored
+    #  - openthaigpt-0.1.0-beta:/root/.cache # Location downloaded weights will be stored
+       - /home/ubuntu/docker-jupyterhub/data:/home
+       - /home/ubuntu/docker-jupyterhub/jupyterhub_config.py:/workspace/jupyterhub_config.py
     ports:
-      - 7860:7860
+      - 8000:8000
     deploy:
       resources:
         reservations:
@@ -24,5 +26,5 @@ services:
               capabilities: [ gpu ]
 
 volumes:
-  openthaigpt-0.1.0-beta:
-    name: openthaigpt-0.1.0-beta
+  jupyterhub-gpu-cuda12:
+    name: jupyterhub-gpu-cuda12
